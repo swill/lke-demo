@@ -22,3 +22,15 @@ spec:
         name: nginx
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: podinfo-service-v1
+spec:
+  selector:
+    lab: "podinfo-1"
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

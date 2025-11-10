@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akamai-b2-1
+  labels:
+    app: stefanprodan
+    lab: "podinfo"
+spec:
+  selector:
+    matchLabels:
+      app: stefanprodan
+      lab: "podinfo"
+  replicas: 9
+  template:
+    metadata:
+      labels:
+        app: stefanprodan
+        lab: "podinfo"
+    spec:
+      containers:
+      - name: podinfo
+        image: stefanprodan/podinfo:latest
+        ports:
+        - containerPort: 9898
+        env:
+        - name: PODINFO_UI_MESSAGE
+          value: "Version 1"
