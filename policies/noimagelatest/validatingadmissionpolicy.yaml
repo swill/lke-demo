@@ -12,4 +12,4 @@ spec:
       resources:   ["pods"]
   validations:
     - expression: "object.metadata.namespace == 'default' && object.spec.containers.image.endsWith('latest')"
-      messageExpression: "'Deployment spec.replicas set to ' + string(object.spec.replicas)"
+      messageExpression: "Cannot use image with latest tag"
