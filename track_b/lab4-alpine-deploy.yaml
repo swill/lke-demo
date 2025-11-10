@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab4-alpine
+  labels:
+    app: apline
+    lab: "4.1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alpine
+      lab: "4.1"
+  template:
+    metadata:
+      labels:
+        app: alpine
+        lab: "4.1"
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        ports:
+        - containerPort: 80
