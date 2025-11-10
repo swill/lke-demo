@@ -6,13 +6,10 @@ spec:
   failurePolicy: Fail
   matchConstraints:
     resourceRules:
-    - apiGroups:   ["apps"]
+    - apiGroups:   [""]
       apiVersions: ["v1"]
       operations:  ["CREATE", "UPDATE"]
-      resources:   ["deployments"]
+      resources:   ["pods"]
   validations:
-    - expression: "object.spec.replicas > 50"
-      messageExpression: "'Deployment spec.replicas set to ' + string(object.spec.replicas)"
-  auditAnnotations:
-    - key: "high-replica-count"
-      valueExpression: "'Deployment spec.replicas set to ' + string(object.spec.replicas)"
+    - expression: "object.spec.containers.resources.limits == '' && object.spec.containers.resources.requests == ''"
+      messageExpression: "Must specify compute resources"
