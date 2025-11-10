@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-dev-staging-to-prod
+  namespace: prod
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector: {}
+    - namespaceSelector:
+        matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values:
+          - dev
+          - staging

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    role: "frontend"
+spec:
+  selector:
+    matchLabels:
+      role: "frontend"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: "frontend"
+    spec:
+      containers:
+      - name: frontend-container
+        image: stefanprodan/podinfo:latest
+        env:
+        - name: PODINFO_UI_MESSAGE
+          value: "Frontend Service"

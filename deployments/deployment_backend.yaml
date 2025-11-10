@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    role: "backend"
+spec:
+  selector:
+    matchLabels:
+      role: "backend"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: "backend"
+    spec:
+      containers:
+      - name: backend-container
+        image: stefanprodan/podinfo:latest
+        env:
+        - name: PODINFO_UI_MESSAGE
+          value: "Backend Service"
