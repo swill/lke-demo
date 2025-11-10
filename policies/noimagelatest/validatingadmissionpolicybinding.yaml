@@ -8,5 +8,5 @@ spec:
   matchResources:
     namespaceSelector:
       matchLabels:
-        environment: test
+        kubernetes.io/metadata.name: default
 

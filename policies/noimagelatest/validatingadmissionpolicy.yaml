@@ -9,10 +9,7 @@ spec:
     - apiGroups:   ["apps"]
       apiVersions: ["v1"]
       operations:  ["CREATE", "UPDATE"]
-      resources:   ["deployments"]
+      resources:   ["pods"]
   validations:
-    - expression: "object.spec.replicas > 50"
+    - expression: "object.metadata.namespace == 'default' && object.spec.containers.image.endsWith('latest')"
       messageExpression: "'Deployment spec.replicas set to ' + string(object.spec.replicas)"
-  auditAnnotations:
-    - key: "high-replica-count"
-      valueExpression: "'Deployment spec.replicas set to ' + string(object.spec.replicas)"
