@@ -1,0 +1,9 @@
+image: stefanprodan/podinfo:latest
+name: staging-deploy
+replicas: 2
+memoryLimit: 512Mi
+configMapName: staging-cm
+env: staging
+sevicePort: 80
+containerPort: 9898
+namespace: staging

@@ -1,0 +1,9 @@
+image: stefanprodan/podinfo:latest
+name: prod-deploy
+replicas: 3
+memoryLimit: 1Gi
+configMapName: prod-cm
+env: prod
+sevicePort: 80
+containerPort: 9898
+namespace: prod
